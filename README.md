@@ -1,7 +1,12 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# project name here
+# OOP School Library
 
-> Project description here.
+> Imagine that you are the librarian of OOP University, and you need a tool to record what books are in the library and who borrows them. I used Opject Oriented Programming to create this app and it will allow a you to:
+>- Add new students or teachers.
+>- Add new books.
+>- Save records of who borrowed a given book and when.
+>
+>And all of this built in a beautiful and well-organized way!
 
 ## Built With
 
