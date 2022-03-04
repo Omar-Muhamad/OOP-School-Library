@@ -6,10 +6,16 @@ class Student < Person
   def initialize(classroom, *args)
     super(*args)
     @classroom = classroom
-    classroom.student.push(self)
   end
 
   def play_hooky
     "¯\(ツ)/¯"
   end
+
+  
+  def add_classroom=(classroom)
+    @classroom = classroom
+    classroom.student.push(self)
+  end
 end
+
