@@ -14,19 +14,19 @@ class App
   end
 
   def run_program
-    puts "[1] List all Books"
-    puts "[2] List all people"
-    puts "[3] Create a person"
-    puts "[4] Create a book"
-    puts "[5] Create a rental"
-    puts "[6] list all rentals"
-    puts "[7] Exit"
+    puts '[1] List all Books'
+    puts '[2] List all people'
+    puts '[3] Create a person'
+    puts '[4] Create a book'
+    puts '[5] Create a rental'
+    puts '[6] list all rentals'
+    puts '[7] Exit'
     puts
-    print "choose number of operation you want to proceed: "
+    print 'choose number of operation you want to proceed: '
     user_choice = gets.chomp
     operator(user_choice)
   end
-  
+
   def operator(user_choice)
     case user_choice
     when '1'
@@ -41,42 +41,29 @@ class App
       create_rental
     when '6'
       list_rentals
-    when '7'
-      exit
     else
-      puts
-      p 'You entered wrong number please try again'
-      puts
-      run_program
+      exit
     end
   end
 
   def list_books
-    puts
-    if @books_list.length == 0
-      p "There is no books to show, Add new one"
-      puts
-      run_program
+    if @books_list.length.zero?
+      p 'There is no books to show, Add new one'
     else
       @books_list.each { |book| puts "Title: #{book.title}, Author: #{book.author}" }
-      puts
-      run_program
     end
+    run_program
   end
 
   def list_people
-    puts
-    if @people_list.length == 0
-      p "There is no people to show, Add new one"
-      puts
-      run_program
+    if @people_list.length.zero?
+      p 'There is no people to show, Add new one'
     else
       @people_list.each do |person|
         p "Person ID: #{person.id}, Name: #{person.name} (#{person.class.name}), Age: #{person.age}"
       end
-      puts
-      run_program
     end
+    run_program
   end
 
   def create_person
@@ -93,7 +80,7 @@ class App
   end
 
   def add_student
-    print 'Student classroom: ' 
+    print 'Student classroom: '
     classroom = gets.chomp.to_i
     print 'Student name: '
     name = gets.chomp
@@ -103,9 +90,7 @@ class App
     input = gets.chomp.downcase
     valid_permission = input == 'y'
     @people_list.push(Student.new(classroom, age, name, parent_permission: valid_permission))
-    puts
     p 'Student added successfully'
-    puts
     run_program
   end
 
@@ -117,9 +102,7 @@ class App
     print 'Teacher specialization: '
     specialization = gets.chomp
     @people_list.push(Teacher.new(specialization, age, name))
-    puts
     p 'Teacher added successfully'
-    puts
     run_program
   end
 
@@ -129,55 +112,34 @@ class App
     print 'Book author: '
     author = gets.chomp
     @books_list.push(Book.new(title, author))
-    puts
     p 'Book added successfully'
-    puts
     run_program
   end
 
   def create_rental
-    if @books_list.length == 0
-      puts
-      p "Please add a book first"
-      puts
-      run_program
-    elsif @people_list.length == 0
-      puts
-      p "Please add a person first"
-      puts
-      run_program
-    else
-      p 'Please select a book: '
-      puts
-      @books_list.each_with_index do |book, id|
-        puts "[#{id}] #{book.title}. By: #{book.author}"
-      end
-      puts
-      print "Choose book number: "
-      book = @books_list[gets.chomp.to_i]
-      puts
-      p 'Please select the person'
-      puts
-      @people_list.each_with_index do |person, id|
-        puts "[#{id}] Name: #{person.name} (#{person.class.name})"
-      end
-      puts
-      print "Choose person number: "
-      person = @people_list[gets.chomp.to_i]
-      print 'Date of rental (dd-mm-yyyy): '
-      date = gets.chomp
-      @rentals_list.push(Rental.new(date, book, person))
-      puts
-      p 'Rental data added successfully'
-      puts
-      run_program
+    p 'Please select a book: '
+    @books_list.each_with_index do |book, id|
+      puts "[#{id}] #{book.title}. By: #{book.author}"
     end
+    print 'Choose book number: '
+    book = @books_list[gets.chomp.to_i]
+    p 'Please select the person'
+    @people_list.each_with_index do |person, id|
+      puts "[#{id}] Name: #{person.name} (#{person.class.name})"
+    end
+    print 'Choose person number: '
+    person = @people_list[gets.chomp.to_i]
+    print 'Date of rental (dd-mm-yyyy): '
+    date = gets.chomp
+    @rentals_list.push(Rental.new(date, book, person))
+    p 'Rental data added successfully'
+    run_program
   end
 
   def list_rentals
     puts
-    if @rentals_list.length == 0
-      p "There is no rentals to show, Add new one"
+    if @rentals_list.length.zero?
+      p 'There is no rentals to show, Add new one'
       puts
       run_program
     else
@@ -192,7 +154,6 @@ class App
         else
           puts
           p 'There are no rentals data for that id'
-          run_program
         end
       end
     end
@@ -200,6 +161,6 @@ class App
 
   def exit
     puts
-    p "Have a great day, Bye..."
+    p 'Have a great day, Bye...'
   end
 end
