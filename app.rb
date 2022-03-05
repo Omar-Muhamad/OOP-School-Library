@@ -155,6 +155,7 @@ class App
       puts
       print "Choose book number: "
       book = @books_list[gets.chomp.to_i]
+      puts
       p 'Please select the person'
       puts
       @people_list.each_with_index do |person, id|
@@ -180,15 +181,18 @@ class App
       puts
       run_program
     else
-      p "Enter person's id: "
+      print "Enter person's id: "
       id = gets.chomp.to_i
-      @people.each do |person|
+      @people_list.each do |person|
         if person.id == id
           person.rentals.each do |rental|
             p "Book title: #{rental.book.title}, Rental date: #{rental.date}"
           end
+          run_program
         else
+          puts
           p 'There are no rentals data for that id'
+          run_program
         end
       end
     end
