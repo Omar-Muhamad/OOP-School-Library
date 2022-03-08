@@ -1,10 +1,10 @@
-require_relative 'person'
-require_relative 'book'
-require_relative 'classroom'
-require_relative 'corrector'
-require_relative 'rental'
-require_relative 'student'
-require_relative 'teacher'
+require './classes/person'
+require './classes/book'
+require './classes/classroom'
+require './classes/corrector'
+require './classes/rental'
+require './classes/student'
+require './classes/teacher'
 
 class App
   def initialize
@@ -52,7 +52,9 @@ class App
     if @people_list.length.zero?
       puts '>>>>>>>>>>>>>>>>>  There is no people to show, Add new one  <<<<<<<<<<<<<<<<<'
     else
-      @people_list.each { |person| puts "Person ID: #{person.id}, Name: #{person.name} (#{person.class.name}), Age: #{person.age}" }
+      @people_list.each do |person|
+        puts "Person ID: #{person.id}, Name: #{person.name} (#{person.class.name}), Age: #{person.age}"
+      end
     end
     run_program
   end
