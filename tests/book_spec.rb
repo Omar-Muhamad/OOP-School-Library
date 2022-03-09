@@ -1,4 +1,4 @@
-require '../classes/book'
+require_relative '../classes/book'
 
 describe 'Create book object' do
   context 'given the valid inputs' do

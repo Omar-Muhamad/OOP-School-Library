@@ -1,4 +1,4 @@
-require '../classes/person'
+require_relative '../classes/person'
 
 describe 'Create person object' do
   context 'given the valid inputs' do

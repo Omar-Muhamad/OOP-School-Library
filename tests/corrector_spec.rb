@@ -1,4 +1,4 @@
-require '../classes/corrector'
+require_relative '../classes/corrector'
 
 describe Corrector do
   context 'When testing the Corrector class' do

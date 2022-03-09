@@ -1,4 +1,4 @@
-require '../classes/student'
+require_relative '../classes/student'
 
 describe 'Create student object' do
   context 'given the valid inputs' do
